@@ -20,7 +20,8 @@ function printArray(arr){
 	var table = "";
 	for (var i = 0, lenA = arr.length; i < lenA; i++) {
 		var item = arr[i];
-		if(item !== undefined 
+		if(typeof item !== "undefined" 
+			&& typeof item !== "string"
 			&& item !== null 
 			&& item.length > 0)
 		{

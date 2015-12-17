@@ -44,6 +44,7 @@ function printArray(arr){
 	for (var i = 0, lenA = arr.length; i < lenA; i++) {
 		var item = arr[i];
 		if(typeof item !== "undefined" 
+			&& typeof item !== "string"
 			&& item !== null 
 			&& item.length > 0)
 		{
@@ -60,8 +61,8 @@ function printArray(arr){
 }
 // -------------------------- Main --------------------------
 
-var arr1 = [3, undefined, 4, 5, NaN, 2, 6, null, NaN, 3, 7]; 
-var arr2 = [1, 2, 3, 4, undefined, 7, NaN, 9, 90, null, 3];
+var arr1 = [3, undefined, 4, "a", 5, NaN, 2, 6, null, NaN, 3, 7, "a"]; 
+var arr2 = [1, 2, 3, 4, undefined, 7, "a", NaN, 9, 90, null, 3];
 
 var res = findDuplicate(arr1, arr2);
 printArray(res);
