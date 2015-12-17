@@ -9,29 +9,29 @@
 
 // ----------------------------------------------------------
 function findDuplicate(arr1, arr2){
-	var resultArr = [];
+	var result = [];
 
-	for (var i = arr1.length - 1; i >= 0; i--) {
+	for (var i = 0, lenArr1 = arr1.length; i < lenArr1; i++) {
 		var item1 = arr1[i];
-		for (var j = arr2.length - 1; j >= 0; j--) {
+		for (var j = 0, lenArr2 = arr2.length; j < lenArr2; j++) {
 			var item2 = arr2[j];
-			if(item1 === item2 || 
-				(item1 !== item1 && item2 !== item2)
-				&& !contains(resultArr, arr2[j]))
+			if((item1 === item2 || 
+				(item1 !== item1 && item2 !== item2)) // NaN == NaN
+				&& !contains(result, item2))
 			{
-				resultArr.unshift(arr2[j]);
+				result.push(item2);
 			}
 		}
 	}
 
-	return resultArr;
+	return result;
 }
 // ----- Определяет, входит ли элемент в состав массива -----
-function contains(arr, findItem){
+function contains(arr, item){
 	for (var i = arr.length - 1; i >= 0; i--) {
-		var currentItem = arr[i];
-		if(currentItem === findItem ||
-			(currentItem !== currentItem && findItem !== findItem))
+		var current = arr[i];
+		if(current === item ||
+			(current !== current && item !== item)) // NaN == NaN
 		{
 			return true;
 		}
@@ -43,7 +43,7 @@ function printArray(arr){
 	var table = "";
 	for (var i = 0, lenA = arr.length; i < lenA; i++) {
 		var item = arr[i];
-		if(typeof item !== undefined 
+		if(typeof item !== "undefined" 
 			&& item !== null 
 			&& item.length > 0)
 		{
@@ -60,8 +60,8 @@ function printArray(arr){
 }
 // -------------------------- Main --------------------------
 
-var arr1 = [3, undefined, 4, 5, NaN, 2, 6, null]; 
-var arr2 = [1, 2, 3, 4, undefined, 7, NaN, null];
+var arr1 = [3, undefined, 4, 5, NaN, 2, 6, null, NaN, 3, 7]; 
+var arr2 = [1, 2, 3, 4, undefined, 7, NaN, 9, 90, null, 3];
 
 var res = findDuplicate(arr1, arr2);
 printArray(res);
