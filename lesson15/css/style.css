@@ -1,0 +1,16 @@
+div {
+	margin: 10px;
+	float: left;
+	background: #fff;
+}
+table{
+	border-collapse: collapse;
+}
+td{
+	padding: 5px;
+	border: 2px solid black;
+	text-align: right;
+}
+tr:nth-child(even) {
+	background-color: #9f9f9f;
+}
